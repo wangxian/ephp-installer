@@ -1,0 +1,24 @@
+{
+    "name": "wangxian/ephp-installer",
+    "description": "ePHP is a PHP micro framework that helps you quickly write simple yet powerful web applications and APIs.",
+    "type": "project",
+    "require": {
+        "wangxian/ephp": "*"
+    },
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "wangxian",
+            "email": "xian366@126.com"
+        }
+    ],
+
+    "autoload" : {
+        "classmap" : [],
+        "files": ["ephp/src/Misc/helpers.php"],
+        "psr-4": {
+            "ePHP\\": "ephp/src/",
+            "App\\": "app/"
+        }
+    }
+}
