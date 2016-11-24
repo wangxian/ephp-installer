@@ -1,5 +1,5 @@
 {
-    "name": "wangxian/ephp-installer",
+    "name": "ephp/installer",
     "description": "ePHP is a PHP micro framework that helps you quickly write simple yet powerful web applications and APIs.",
     "type": "project",
     "require": {
