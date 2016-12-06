@@ -20,9 +20,6 @@ return [
     // 默认路由方式
     'url_type'      => 'PATH_INFO',
 
-    // 数据库驱动配置
-    'dbdriver'      => 'mysqli',
-
     // view中可使用STATIC_DIR引用路径，
     // 可自定义项目的位置，是在某一个目录里，还是在根目录
     // 或者用户CDN，自定义URL前缀，如http://cdn.xxx.com/assets/
@@ -51,4 +48,44 @@ return [
     // 例如：500.html, 对应的文件views/500.html
     // 留空，使用系统默认设置
     'tpl_error'     => '',
+
+    // 数据库驱动配置，可选：mysqli, mysql, sqlite3
+    'dbdriver'      => 'sqlite3',
+
+    // 数据库配置
+    'dbconfig'      => [
+        // default db
+        'default' =>
+        [
+            'host'      => '127.0.0.1',
+            'user'      => 'root',
+            'password'  => '111111',
+            'dbname'    => 'test',
+            'port'      => '3306',
+            'tb_prefix' => 't_',
+            'charset'   => 'utf8',
+        ],
+
+        // master
+        'master'  =>
+        [
+            'host'      => '/Users/wangxian/test.db',
+            'user'      => 'user',
+            'password'  => '',
+            'dbname'    => '',
+            'port'      => '',
+            'tb_prefix' => 't_',
+        ],
+
+        // salve
+        'slave'   =>
+        [
+            'host'      => '',
+            'user'      => '',
+            'password'  => '',
+            'dbname'    => '',
+            'port'      => '',
+            'tb_prefix' => 't_',
+        ],
+    ],
 ];
