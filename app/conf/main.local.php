@@ -25,9 +25,6 @@ return [
     // 或者用户CDN，自定义URL前缀，如http://cdn.xxx.com/assets/
     'static_dir'    => '',
 
-    // 缓存方式
-    'cache_type'    => 'FileCache',
-
     // 日志目录
     'log_dir'       => 'logs/',
 
@@ -49,8 +46,28 @@ return [
     // 留空，使用系统默认设置
     'tpl_error'     => '',
 
+    // 设置缓存驱动方式，可选：file, memcached, redis
+    'cache_driver'  => 'file',
+
+    // 如果缓存驱动为file, 设置文件缓存的目录
+    'cache_dir'     => 'cache/',
+
+    // memcached 缓存配置
+    // 'cache_memcached' => [
+    //     ['host'=>'192.168.0.102', 'port'=>11211, 'weight'=>3],
+    //     ['host'=>'192.168.0.103', 'port'=>11211, 'weight'=>3],
+    //     ['host'=>'192.168.0.106', 'port'=>11211, 'weight'=>4]
+    // ],
+
+    // 'cache_redis'   => [
+    //     'host'    => '127.0.0.1',
+    //     'port'    => '6379',
+    //     'timeout' => 2.5,
+    //     'auth'    => ''
+    // ],
+
     // 数据库驱动配置，可选：mysqli, mysql, sqlite3
-    'dbdriver'      => 'sqlite3',
+    'dbdriver'      => 'mysqli',
 
     // 数据库配置
     'dbconfig'      => [
