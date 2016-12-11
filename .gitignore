@@ -27,3 +27,4 @@ composer.lock
 /vendor
 
 /ephp
+**/cache/*
