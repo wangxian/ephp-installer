@@ -9,7 +9,7 @@ $env = getenv('RUN_ENV');
 define('RUN_ENV', $env ? $env : 'local');
 
 // app directory
-define('APP_PATH', __DIR__);
+define('APP_PATH', realpath('../'));
 //--------------------------------------------------------------------------
 
 // 时区设置
