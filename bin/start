@@ -1,2 +1,31 @@
-#!/bin/sh
-php -S 127.0.0.1:8000 -t public
+#!/usr/bin/env php
+<?php
+// php -S 127.0.0.1:8000 -t public
+
+// really project directory
+$app_path = realpath(__DIR__.'/../');
+
+// Bind http server port
+// If you want all users access you server, bind 0.0.0.0:8000
+$bind_http = '127.0.0.1:8000';
+
+echo <<<EOT
+-----------------------------------\033[32m
+      ____    __  __  ____
+     /\  _`\ /\ \/\ \/\  _`\
+   __\ \ \ \ \ \ \_\ \ \ \ \ \
+ /'__`\ \ ,__/\ \  _  \ \ ,__/
+/\  __/\ \ \   \ \ \ \ \ \ \
+\ \____ \\ \_\   \ \_\ \_\ \_\
+ \/____/ \/_/    \/_/\/_/\/_/ \033[31mv7.0.2\033[0m
+ \033[0m
+PHP Development Server started ...
+Listening on \033[34mhttp://{$bind_http}/\033[0m
+Document root is \033[36m{$app_path}/public\033[0m
+Press Ctrl-C to quit.
+-----------------------------------
+
+EOT;
+
+// Start cli Development Server
+passthru("php -S {$bind_http} -t {$app_path}/public");
