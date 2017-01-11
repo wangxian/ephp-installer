@@ -14,12 +14,6 @@ return [
     // 是否打印异常信息到logfile中
     'exception_log' => true,
 
-    // 是否启用路由配置
-    'url_router'    => false,
-
-    // 默认路由方式
-    'url_type'      => 'PATH_INFO',
-
     // view中可使用STATIC_DIR引用路径，
     // 可自定义项目的位置，是在某一个目录里，还是在根目录
     // 或者用户CDN，自定义URL前缀，如http://cdn.xxx.com/assets/
