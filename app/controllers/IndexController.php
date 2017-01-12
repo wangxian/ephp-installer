@@ -14,6 +14,10 @@ class IndexController extends RootController
         dump("SERVER内容", $_SERVER);
         dump("系统信息", $_GET, $_POST);
 
+        // 加密cookie
+        \ePHP\Http\Cookie::setSecret('name', 'test');
+        dump($_COOKIE, \ePHP\Http\Cookie::getSecret('name'));
+
         // echo time();
         run_info();
 
