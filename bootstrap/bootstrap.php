@@ -9,7 +9,7 @@ $env = getenv('RUN_ENV');
 define('RUN_ENV', $env ? $env : 'local');
 
 // define app directory
-define('APP_PATH', realpath('../'));
+define('APP_PATH', realpath(__DIR__ . '/../'));
 //--------------------------------------------------------------------------
 
 // Set default timezone
@@ -19,4 +19,5 @@ date_default_timezone_set('PRC');
 Config::set('main', include_once APP_PATH . '/conf/main.' . RUN_ENV . '.php');
 
 // Initialize routes
+// Support for include multiple routing files
 include_once APP_PATH . '/conf/routes.php';

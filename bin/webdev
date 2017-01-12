@@ -2,7 +2,7 @@
 <?php
 // php -S 127.0.0.1:8000 -t public
 
-// really project directory
+// Really project directory
 $app_path = realpath(__DIR__.'/../');
 
 // Bind http server port
