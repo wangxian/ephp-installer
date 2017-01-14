@@ -1,4 +1,4 @@
-FROM wangxian/alpine-php:latest
+FROM wangxian/alpine-php:7.0.14.r0
 MAINTAINER WangXian <xian366@126.com>
 
 # Copy app source to image
@@ -9,6 +9,6 @@ EXPOSE 80 443
 
 # Custom server configure
 ADD docker/nginx.conf /etc/nginx/
-ADD docker/php-fpm.conf /etc/php5/
+ADD docker/php-fpm.conf /etc/php7/
 
 CMD ["/bin/sh", "/app/startup.sh"]
