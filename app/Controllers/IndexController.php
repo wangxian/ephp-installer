@@ -6,6 +6,10 @@ class IndexController extends RootController
 
     function index()
     {
+        // 加密cookie
+        \ePHP\Http\Cookie::setSecret('name', 'test');
+        dump($_COOKIE, \ePHP\Http\Cookie::getSecret('name'));
+
         // var_dump($this->model->dbconfig("master")->table("t_test")->findAll());
         // var_dump($this->model_test->dbconfig("master")->findAll());
         // var_dump($this->model_test->dbconfig("master")->getBy(['id >'=>2]));
@@ -13,10 +17,6 @@ class IndexController extends RootController
 
         dump("SERVER内容", $_SERVER);
         dump("系统信息", $_GET, $_POST);
-
-        // 加密cookie
-        \ePHP\Http\Cookie::setSecret('name', 'test');
-        dump($_COOKIE, \ePHP\Http\Cookie::getSecret('name'));
 
         // echo time();
         run_info();
