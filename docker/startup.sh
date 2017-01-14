@@ -3,7 +3,7 @@
 
 echo "192.168.1.106 api.xxx.com" >> /etc/hosts
 
-sh -c 'printf 5000 > /net/core/somaxconn'
+# sh -c 'printf 5000 > /net/core/somaxconn'
 
 chmod 777 -R logs/
 chmod 777 -R cache/
