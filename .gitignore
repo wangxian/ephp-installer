@@ -25,6 +25,5 @@ Thumbs.db
 composer.lock
 /vendor
 
-/ephp
-**/cache/*
+/cache
 !/cache/.gitkeep
