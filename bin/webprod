@@ -5,9 +5,10 @@
 //   - https://wiki.swoole.com/wiki/page/274.html
 //   - https://wiki.swoole.com/wiki/page/620.html
 $config = [
-    'reactor_num' => 2,
-    'worker_num'  => 5,
-    'max_request' => 512,
+    'reactor_num'     => 2,
+    'worker_num'      => 5,
+    'task_worker_num' => 2,
+    'max_request'     => 512,
 
     'host' => '127.0.0.1',
     'port' => 8000
@@ -41,5 +42,17 @@ require __DIR__ . '/../vendor/autoload.php';
 
 require_once __DIR__ . '/../bootstrap/bootstrap.php';
 
-// Start production server
-\ePHP\Core\Server::init()->createServer($config);
+// Create production server
+$http = \ePHP\Core\Server::init()->createServer($config);
+
+// Register a task Listener for handle Async Task
+// Backend Task
+// $http->server->on('task', function (swoole_server $serv, $task_id, $from_id, $data)
+// {
+//     var_dump("task-data=", $data);
+
+//     // return to the worker
+//     return $data;
+// });
+
+$http->start();
