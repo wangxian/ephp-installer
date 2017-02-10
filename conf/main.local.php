@@ -60,8 +60,8 @@ return [
     //     'auth'    => ''
     // ],
 
-    // 数据库驱动配置，可选：mysqli, mysql, sqlite3
-    'dbdriver'      => 'mysqli',
+    // 数据库驱动配置，可选：mysqli, mysql, sqlite3, mysqlco
+    'dbdriver'      => 'mysqlco',
 
     // 数据库配置
     'dbconfig'      => [
