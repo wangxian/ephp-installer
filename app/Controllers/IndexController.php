@@ -3,9 +3,60 @@ namespace App\Controllers;
 
 class IndexController extends RootController
 {
+    function test()
+    {
+        $x = \App\Services\DemoService::init();
+        var_dump($x->pool);
+    }
+
+    function dequeue()
+    {
+        $x = \App\Services\DemoService::init();
+        if (! $x->pool->isEmpty())
+        {
+            dump($x->pool->dequeue());
+        }
+        else
+        {
+            echo 'empty queue';
+        }
+    }
 
     function index()
     {
+        // dump($this->model->table('mytest')->data(['name'=>time()])->insert());
+        dump($this->model->table('mytest')->limit(1)->find());
+        // dump($this->model->query('show tables')->find());
+        // echo '123';
+        run_info();
+        return false;
+        // $q = new \SplQueue();
+        // $q->setIteratorMode(\SplQueue::IT_MODE_DELETE);
+        // $q[] = time();
+        // $q[] = time();
+        // $q[] = time();
+        // var_dump($q);
+
+        // return false;
+        $x = \App\Services\DemoService::init();
+        $x->pool->enqueue((object)[$x->num++]);
+        var_dump($x->pool);
+        // array_push($x->pool, new \mysqli('127.0.0.1', 'root', '111111', 'test'));
+        // foreach ($x->pool as $v)
+        // {
+        //     dump($v->thread_id);
+        // }
+        // ob_start();
+        // $res = (new \ePHP\Model\BaseModel())->table('test')->where(["amount"=>22])->findAll();
+        // dump($res);
+        // $db = new \mysqli('127.0.0.1', 'root', '111111', 'test');
+        // var_dump($db->query('select * from test'));
+        // echo '123';
+        // $this->response->end(ob_get_clean());
+        // echo 'hello';
+
+
+        // return ;
         // 加密cookie
         // (new \ePHP\Http\Cookie())->setSecret('name', 'test');
         // dump($_COOKIE, (new \ePHP\Http\Cookie())->getSecret('name'));

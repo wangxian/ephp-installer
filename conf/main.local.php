@@ -22,9 +22,6 @@ return [
     // 日志目录
     'log_dir'       => 'logs/',
 
-    // 缓存目录
-    'cache_dir'     => 'cache/',
-
     // 自定义404页面
     // 例如设置：404.html, 对应的文件views/404.html
     // 如果不设置，显示系统默认404界面
@@ -75,6 +72,11 @@ return [
             'port'      => '3306',
             'tb_prefix' => 't_',
             'charset'   => 'utf8',
+
+            // Max mysql pool size
+            // Only support dbdriver mysqlco
+            'idle_pool_size' => 5,
+            'max_pool_size'  => 10
         ],
 
         // master

@@ -6,9 +6,9 @@
 //   - https://wiki.swoole.com/wiki/page/620.html
 $config = [
     'reactor_num'     => 2,
-    'worker_num'      => 5,
-    'task_worker_num' => 2,
-    'max_request'     => 512,
+    'worker_num'      => 10,
+    'task_worker_num' => 0,
+    'max_request'     => 2000,
 
     'host' => '127.0.0.1',
     'port' => 8000
