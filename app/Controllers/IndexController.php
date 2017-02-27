@@ -5,17 +5,23 @@ class IndexController extends RootController
 {
     function test()
     {
-        $x = \App\Services\DemoService::init();
-        var_dump($x->pool);
+        if (defined('RUN_ENV') && RUN_ENV == 'local')
+        {
+            // echo time();
+            echo '----';
+        }
     }
-    
+
     function index()
     {
+        show_404();
+        // echo 123;
+        // throw new \ePHP\Exception\ExitException('11');
         // dump($this->model->table('mytest')->data(['name'=>time()])->insert());
-        dump($this->model->table('mytest')->where(['id'=>22])->findAll());
+        // dump($this->model->table('mytest')->where(['id'=>22])->findAll());
         // dump($this->model->query('show tables')->find());
         // echo '123';
-        run_info();
+        // run_info();
         return false;
         // $q = new \SplQueue();
         // $q->setIteratorMode(\SplQueue::IT_MODE_DELETE);
