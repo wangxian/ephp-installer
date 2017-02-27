@@ -19,17 +19,8 @@ return [
     // 请在正式环境，关闭此选项
     'sql_log'       => true,
 
-    // 配置默认php.ini的配置，时候显示系统错误
-    // 如果不显示错误，则可能抑制PHP发出notice级别的错误
-    'show_errors'   => true,
-
     // 是否打印异常信息到logfile中
     'exception_log' => true,
-
-    // view中可使用STATIC_DIR引用路径，
-    // 可自定义项目的位置，是在某一个目录里，还是在根目录
-    // 或者用户CDN，自定义URL前缀，如http://cdn.xxx.com/assets/
-    'static_dir'    => '',
 
     // 自定义404页面
     // 例如设置：404.html, 对应的文件views/404.html

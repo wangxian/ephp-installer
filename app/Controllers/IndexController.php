@@ -5,11 +5,6 @@ class IndexController extends RootController
 {
     function test()
     {
-        if (defined('RUN_ENV') && RUN_ENV == 'local')
-        {
-            // echo time();
-            echo '----';
-        }
     }
 
     function index()
