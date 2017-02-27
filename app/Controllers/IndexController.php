@@ -8,24 +8,11 @@ class IndexController extends RootController
         $x = \App\Services\DemoService::init();
         var_dump($x->pool);
     }
-
-    function dequeue()
-    {
-        $x = \App\Services\DemoService::init();
-        if (! $x->pool->isEmpty())
-        {
-            dump($x->pool->dequeue());
-        }
-        else
-        {
-            echo 'empty queue';
-        }
-    }
-
+    
     function index()
     {
         // dump($this->model->table('mytest')->data(['name'=>time()])->insert());
-        dump($this->model->table('mytest')->limit(1)->find());
+        dump($this->model->table('mytest')->where(['id'=>22])->findAll());
         // dump($this->model->query('show tables')->find());
         // echo '123';
         run_info();

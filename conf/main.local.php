@@ -4,7 +4,19 @@ return [
     // 请在正式环境，关闭此选项
     'show_dump'     => true,
 
+    // 设置缓存驱动方式
+    // 可选：file, memcached, redis
+    'cache_driver'  => 'file',
+
+    // 如果缓存驱动为file, 设置文件缓存的目录
+    'cache_dir'     => 'cache/',
+
+    // 设置文件日志存储目录
+    'log_dir'       => 'logs/',
+
     // 是否记录SQL执行记录
+    // 如果开启此选项，将在记录详细的SQL执行记录，文件名：SQL-Log-{日期}.log
+    // 请在正式环境，关闭此选项
     'sql_log'       => true,
 
     // 配置默认php.ini的配置，时候显示系统错误
@@ -18,9 +30,6 @@ return [
     // 可自定义项目的位置，是在某一个目录里，还是在根目录
     // 或者用户CDN，自定义URL前缀，如http://cdn.xxx.com/assets/
     'static_dir'    => '',
-
-    // 日志目录
-    'log_dir'       => 'logs/',
 
     // 自定义404页面
     // 例如设置：404.html, 对应的文件views/404.html
@@ -36,12 +45,6 @@ return [
     // 例如：500.html, 对应的文件views/500.html
     // 留空，使用系统默认设置
     'tpl_error'     => '',
-
-    // 设置缓存驱动方式，可选：file, memcached, redis
-    'cache_driver'  => 'file',
-
-    // 如果缓存驱动为file, 设置文件缓存的目录
-    'cache_dir'     => 'cache/',
 
     // memcached 缓存配置
     // 'cache_memcached' => [
