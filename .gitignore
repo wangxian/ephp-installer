@@ -1,4 +1,5 @@
 *.log
+*.cache
 *.csv
 *.dat
 *.seed
