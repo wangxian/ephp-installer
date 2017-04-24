@@ -3,10 +3,6 @@ namespace App\Controllers;
 
 class IndexController extends RootController
 {
-    function test()
-    {
-    }
-
     function index()
     {
         // show_404();

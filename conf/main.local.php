@@ -37,6 +37,9 @@ return [
     // 留空，使用系统默认设置
     'tpl_error'     => '',
 
+    // Default PHP session name
+    'session_name' => 'pppid',
+
     // memcached 缓存配置
     // 'cache_memcached' => [
     //     ['host'=>'192.168.0.102', 'port'=>11211, 'weight'=>3],
@@ -52,7 +55,7 @@ return [
     // ],
 
     // 数据库驱动配置，可选：mysqli, mysql, sqlite3, mysqlco
-    'dbdriver'      => 'mysqlco',
+    'dbdriver'      => 'mysqli',
 
     // 数据库配置
     'dbconfig'      => [
