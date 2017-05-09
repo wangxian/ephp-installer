@@ -11,8 +11,8 @@ return [
     // 如果缓存驱动为file, 设置文件缓存的目录
     'cache_dir'     => 'cache/',
 
-    // 设置文件日志存储目录
-    'log_dir'       => 'logs/',
+    // 设置Logger写日志的方式和写入的目录
+    'log_writer'    => new \ePHP\Logger\FileLogger( 'logs/' ),
 
     // 是否记录SQL执行记录
     // 如果开启此选项，将在记录详细的SQL执行记录，文件名：SQL-Log-{日期}.log
