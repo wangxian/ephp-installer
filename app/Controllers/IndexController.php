@@ -20,9 +20,11 @@ class IndexController extends RootController
         // dump($_COOKIE, (new \ePHP\Http\Cookie())->getSecret('name'));
 
         // 另一种方式，推荐，该方式兼容swoole
-        $this->cookie->setSecret('name', 'test');
-        dump($_COOKIE, $this->cookie->getSecret('name'));
+        // $this->cookie->setSecret('name', 'test');
+        // dump($_COOKIE, $this->cookie->getSecret('name'));
 
+        // print_r($this->model->table("t_test")->cache(120)->findObj());
+        // return run_info();
         // var_dump($this->model->dbconfig("master")->table("t_test")->findAll());
         // var_dump($this->model_test->dbconfig("master")->findAll());
         // var_dump($this->model_test->dbconfig("master")->getBy(['id >'=>2]));

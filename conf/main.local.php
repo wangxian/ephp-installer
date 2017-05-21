@@ -47,12 +47,12 @@ return [
     //     ['host'=>'192.168.0.106', 'port'=>11211, 'weight'=>4]
     // ],
 
-    // 'cache_redis'   => [
-    //     'host'    => '127.0.0.1',
-    //     'port'    => '6379',
-    //     'timeout' => 2.5,
-    //     'auth'    => ''
-    // ],
+    'cache_redis'   => [
+        'host'    => '127.0.0.1',
+        'port'    => '6379',
+        'timeout' => 2.5,
+        'auth'    => ''
+    ],
 
     // 数据库驱动配置，可选：mysqli, mysql, sqlite3, mysqlco
     'dbdriver'      => 'mysqli',
