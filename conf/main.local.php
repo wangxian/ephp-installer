@@ -24,6 +24,7 @@ return [
     // 如需自定义异常处理，自定义异常类需继承\ePHP\Exception\CommonException
     // 默认CommonException自动记录异常信息到logs/ExceptionLog2006-01-03.log
     // 你可以自定义异常类，改变默认行为
+    // 'handler_exception' => \App\Exception\CustomException::class,
     'handler_exception' => \ePHP\Exception\CommonException::class,
 
     // 自定义404页面
