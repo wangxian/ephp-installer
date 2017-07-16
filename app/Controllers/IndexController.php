@@ -5,6 +5,8 @@ class IndexController extends RootController
 {
     function index()
     {
+        // \throw_error("throw new exception");
+
         // show_404();
         // throw new \ePHP\Exception\ExitException('11');
         // dump($this->model->table('mytest')->data(['name'=>time()])->insert());

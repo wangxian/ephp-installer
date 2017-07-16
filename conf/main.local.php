@@ -19,8 +19,12 @@ return [
     // 请在正式环境，关闭此选项
     'sql_log'       => true,
 
-    // 是否打印异常信息到logfile中
-    'exception_log' => true,
+    // 设置异常处理
+    // --------------
+    // 如需自定义异常处理，自定义异常类需继承\ePHP\Exception\CommonException
+    // 默认CommonException自动记录异常信息到logs/ExceptionLog2006-01-03.log
+    // 你可以自定义异常类，改变默认行为
+    'handler_exception' => \ePHP\Exception\CommonException::class,
 
     // 自定义404页面
     // 例如设置：404.html, 对应的文件views/404.html
@@ -47,12 +51,12 @@ return [
     //     ['host'=>'192.168.0.106', 'port'=>11211, 'weight'=>4]
     // ],
 
-    'cache_redis'   => [
-        'host'    => '127.0.0.1',
-        'port'    => '6379',
-        'timeout' => 2.5,
-        'auth'    => ''
-    ],
+    // 'cache_redis'   => [
+    //     'host'    => '127.0.0.1',
+    //     'port'    => '6379',
+    //     'timeout' => 2.5,
+    //     'auth'    => ''
+    // ],
 
     // 数据库驱动配置，可选：mysqli, mysql, sqlite3, mysqlco
     'dbdriver'      => 'mysqli',
