@@ -1,6 +1,6 @@
 #!/usr/bin/env php
 <?php
-// Production server config
+// Swoole server config
 // See Wiki:
 //   - https://wiki.swoole.com/wiki/page/274.html
 //   - https://wiki.swoole.com/wiki/page/620.html
