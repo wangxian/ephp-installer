@@ -5,8 +5,17 @@ return [
     'show_dump'     => true,
 
     // 设置缓存驱动方式
-    // 可选：file, memcached, redis
-    'cache_driver'  => 'file',
+    // 可选：file, memcached, redis, predis
+    // redis为C扩展，如果选择predis, 需要在composer.json中增加
+    // ```
+    // "require": {
+    //     ...
+    //     "predis/predis": "^1.1"
+    //     ...
+    // }
+    // ```
+    // 然后更新composer， 执行 composer update -vvv
+    'cache_driver'  => 'redis',
 
     // 如果缓存驱动为file, 设置文件缓存的目录
     'cache_dir'     => 'cache/',
@@ -52,12 +61,12 @@ return [
     //     ['host'=>'192.168.0.106', 'port'=>11211, 'weight'=>4]
     // ],
 
-    // 'cache_redis'   => [
-    //     'host'    => '127.0.0.1',
-    //     'port'    => '6379',
-    //     'timeout' => 2.5,
-    //     'auth'    => ''
-    // ],
+    'cache_redis'   => [
+        'host'    => '127.0.0.1',
+        'port'    => '6379',
+        'timeout' => 2.5,
+        'auth'    => ''
+    ],
 
     // 数据库驱动配置，可选：mysqli, mysql, sqlite3, mysqlco
     'dbdriver'      => 'mysqli',

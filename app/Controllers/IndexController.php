@@ -5,6 +5,9 @@ class IndexController extends RootController
 {
     function index()
     {
+        // var_dump($client->lrange('apib8-publish-2003', 0, 50));
+        // \run_info();
+
         // \throw_error("throw new exception");
 
         // show_404();
@@ -14,7 +17,6 @@ class IndexController extends RootController
         // dump($this->model->query('show tables')->find());
         // echo '123';
         // run_info();
-
 
         // return ;
         // 加密cookie
@@ -32,6 +34,9 @@ class IndexController extends RootController
         // var_dump($this->model_test->dbconfig("master")->getBy(['id >'=>2]));
         // var_dump($this->model_test->sql);
 
+        // $this->cache->set('datetime', date('Y-m-d H:i:s'), 20);
+        // dump('Value from redis', $this->cache->get('datetime'));
+
         dump("SERVER内容", $_SERVER);
         dump("系统信息", $_GET, $_POST);
 
@@ -43,7 +48,7 @@ class IndexController extends RootController
         // echo $name;
         // echo 120;
 
-        $this->view->name  = 'ePHP';
+        $this->view->name  = 'ephp7';
         $this->view->render();
     }
 }

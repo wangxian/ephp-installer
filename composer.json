@@ -3,7 +3,8 @@
     "description": "ePHP is a PHP micro framework that helps you quickly write simple yet powerful web applications and APIs.",
     "type": "project",
     "require": {
-        "wangxian/ephp": "dev-master"
+        "wangxian/ephp": "dev-master",
+        "predis/predis": "^1.1"
     },
     "license": "MIT",
     "authors": [
