@@ -9,7 +9,7 @@ if (count($argv) > 1)
 }
 else
 {
-    echo 'Please input uri, eg: bin/cli user/info/22';
+    echo "Please input uri, eg: {Your app path}/bin/cli /user/info/22\n";
     exit;
 }
 
