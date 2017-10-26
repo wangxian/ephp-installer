@@ -23,6 +23,9 @@ return [
     // 设置Logger写日志的方式和写入的目录
     'log_writer'    => new \ePHP\Logger\FileLogger( 'logs/' ),
 
+    // 设置日志的打印级别，可选：DEBUG, INFO, WARNING, ERROR, FATAL
+    'log_level'     => 'DEBUG',
+
     // 是否记录SQL执行记录
     // 如果开启此选项，将在记录详细的SQL执行记录，文件名：SQL-Log-{日期}.log
     // 请在正式环境，关闭此选项

@@ -37,6 +37,13 @@ class IndexController extends RootController
         // $this->cache->set('datetime', date('Y-m-d H:i:s'), 20);
         // dump('Value from redis', $this->cache->get('datetime'));
 
+        $this->console->debug("t1");
+        $this->console->info("t2");
+        $this->console->notice("t3");
+        $this->console->warning("t4");
+        $this->console->error("t5");
+        $this->console->fatal("t6");
+
         dump("SERVER内容", $_SERVER);
         dump("系统信息", $_GET, $_POST);
 
