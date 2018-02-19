@@ -37,6 +37,14 @@ class IndexController extends RootController
         // $this->cache->set('datetime', date('Y-m-d H:i:s'), 20);
         // dump('Value from redis', $this->cache->get('datetime'));
 
+        // 测试swoole协程
+        // go(function () {
+        //     $http = new \Co\Http\Client("wangxian.me");
+        //     $http->set([ 'timeout' => 10]);
+        //     $ret = $http->get('/');
+        //     echo $http->body;
+        // });
+
         $this->console->debug("t1");
         $this->console->info("t2");
         $this->console->notice("t3");
