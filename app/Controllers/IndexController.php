@@ -49,6 +49,14 @@ class IndexController extends RootController
         // echo \ePHP\Hash\Encrypt::edcode($h, 'DECODE', 'ephp');
         // $this->stopRun();
 
+        // 测试swoole协程
+        // go(function () {
+        //     $http = new \Co\Http\Client("wangxian.me");
+        //     $http->set([ 'timeout' => 10]);
+        //     $ret = $http->get('/');
+        //     echo $http->body;
+        // });
+
         $this->console->debug("t1");
         $this->console->info("t2");
         $this->console->notice("t3");
