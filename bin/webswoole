@@ -44,11 +44,6 @@ require __DIR__ . '/../vendor/autoload.php';
 
 require_once __DIR__ . '/../bootstrap/bootstrap.php';
 
-// If in `local` environment, in order to facilitate the development force max_request=1
-if (RUN_ENV === 'local') {
-  $config['max_request'] = 1;
-}
-
 // Create production server
 $http = \ePHP\Core\Server::init()->createServer($config);
 
