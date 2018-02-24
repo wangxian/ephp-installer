@@ -23,6 +23,12 @@ class IndexController extends RootController
         // (new \ePHP\Http\Cookie())->setSecret('name', 'test');
         // dump($_COOKIE, (new \ePHP\Http\Cookie())->getSecret('name'));
 
+        // 测试 encryptG、decryptG
+        // echo $ciphertext = \ePHP\Hash\Encrypt::encryptG('1234567890');
+        // echo '<br />';
+        // echo \ePHP\Hash\Encrypt::decryptG($ciphertext);
+        // $this->stopRun();
+
         // 另一种方式，推荐，该方式兼容swoole
         // $this->cookie->setSecret('name', 'test');
         // dump($_COOKIE, $this->cookie->getSecret('name'));
@@ -36,6 +42,12 @@ class IndexController extends RootController
 
         // $this->cache->set('datetime', date('Y-m-d H:i:s'), 20);
         // dump('Value from redis', $this->cache->get('datetime'));
+
+        // echo \ePHP\Hash\Encrypt::edcode('1', 'encode', 'ephp');
+        // echo $h = \ePHP\Hash\Encrypt::edcode('12345678901234567890', 'ENCODE', 'ephp');
+        // echo '<br />';
+        // echo \ePHP\Hash\Encrypt::edcode($h, 'DECODE', 'ephp');
+        // $this->stopRun();
 
         $this->console->debug("t1");
         $this->console->info("t2");
