@@ -57,6 +57,10 @@ class IndexController extends RootController
         //     echo $http->body;
         // });
 
+        // 获取raw content
+        // echo $this->rawContent();
+        // $this->stopRun();
+
         $this->console->debug("t1");
         $this->console->info("t2");
         $this->console->notice("t3");
