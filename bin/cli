@@ -5,11 +5,19 @@ $app_path = realpath(__DIR__.'/../');
 
 if (count($argv) > 1)
 {
-    $_SERVER['PATH_INFO'] = $argv[1];
+    $urls = parse_url($argv[1]);
+
+    // Parse url
+    if ( !empty($urls['query']) ) {
+      parse_str($urls['query'], $gets);
+      $_GET = $_REQUEST = $gets ?? [];
+    }
+
+    $_SERVER['PATH_INFO'] = $urls['path'];
 }
 else
 {
-    echo "Please input uri, eg: {Your app path}/bin/cli /user/info/22\n";
+    echo "Please input uri, eg: bin/cli /user/info/22\?id=99\&name=abc\n";
     exit;
 }
 
