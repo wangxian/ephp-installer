@@ -29,10 +29,6 @@ class IndexController extends RootController
         // echo \ePHP\Hash\Encrypt::decryptG($ciphertext);
         // $this->stopRun();
 
-        // 另一种方式，推荐，该方式兼容swoole
-        // $this->cookie->setSecret('name', 'test');
-        // dump($_COOKIE, $this->cookie->getSecret('name'));
-
         // print_r($this->model->table("t_test")->cache(120)->findObj());
         // return run_info();
         // var_dump($this->model->dbconfig("master")->table("t_test")->findAll());
@@ -47,18 +43,6 @@ class IndexController extends RootController
         // echo $h = \ePHP\Hash\Encrypt::edcode('12345678901234567890', 'ENCODE', 'ephp');
         // echo '<br />';
         // echo \ePHP\Hash\Encrypt::edcode($h, 'DECODE', 'ephp');
-        // $this->stopRun();
-
-        // 测试swoole协程
-        // go(function () {
-        //     $http = new \Co\Http\Client("wangxian.me");
-        //     $http->set([ 'timeout' => 10]);
-        //     $ret = $http->get('/');
-        //     echo $http->body;
-        // });
-
-        // 获取raw content
-        // echo $this->rawContent();
         // $this->stopRun();
 
         $this->console->debug("t1");
@@ -81,5 +65,37 @@ class IndexController extends RootController
 
         $this->view->name  = 'ephp7';
         $this->view->render();
+    }
+
+    /**
+     * 测试swoole
+     */
+    function test_swoole()
+    {
+        // print_r(func_get_args());
+        // 另一种方式，推荐，该方式兼容swoole
+        // $this->cookie->setSecret('name', 'test');
+        // dump($_COOKIE, $this->cookie->getSecret('name'));
+
+        // 测试swoole协程
+        // go(function () {
+        //     $http = new \Co\Http\Client("wangxian.me");
+        //     $http->set([ 'timeout' => 10]);
+        //     $ret = $http->get('/');
+        //     echo $http->body;
+        // });
+
+        // 获取raw content
+        // echo $this->rawContent();
+        // $this->stopRun();
+
+        // \throw_error('test');
+        $this->stopRun();
+
+        // 测试exit
+        echo 'echo hello before exit.';
+        exit;
+
+        \run_info();
     }
 }
