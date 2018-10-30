@@ -88,14 +88,18 @@ class IndexController extends RootController
         // 获取raw content
         // echo $this->rawContent();
         // $this->stopRun();
+        go(function() {
+            \co::sleep(5);
+            echo 'hello world!';
+        });
+        \run_info();
 
         // \throw_error('test');
-        $this->stopRun();
+        // $this->stopRun();
 
         // 测试exit
         echo 'echo hello before exit.';
         exit;
 
-        \run_info();
     }
 }

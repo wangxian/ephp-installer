@@ -9,6 +9,9 @@ $config = [
     'worker_num'      => 10,
     'task_worker_num' => 0,
 
+    // Close build-in coroutine
+    'enable_coroutine' => false,
+
     // If in `local` environment, in order to facilitate the development force max_request=1
     'max_request'     => 2000,
 
