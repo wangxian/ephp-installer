@@ -12,8 +12,9 @@ $config = [
     // Close build-in coroutine
     'enable_coroutine' => false,
 
-    // If in `local` environment, in order to facilitate the development force max_request=1
-    'max_request'     => 2000,
+    // If setting `DEBUG` environment, in order to facilitate the development force max_request=1
+    // eg: DEBUG=true bin/webswoole
+    'max_request'     => getenv('DEBUG') ? 1 : 2000,
 
     'host' => '0.0.0.0',
     'port' => 8000

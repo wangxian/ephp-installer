@@ -72,14 +72,13 @@ class IndexController extends RootController
      */
     function test_swoole()
     {
-        // print_r(func_get_args());
         // 另一种方式，推荐，该方式兼容swoole
         // $this->cookie->setSecret('name', 'test');
         // dump($_COOKIE, $this->cookie->getSecret('name'));
 
         // 测试swoole协程
         // go(function () {
-        //     $http = new \Co\Http\Client("wangxian.me");
+        //     $http = new \Co\Http\Client("wangxian.me", 443, true);
         //     $http->set([ 'timeout' => 10]);
         //     $ret = $http->get('/');
         //     echo $http->body;
@@ -88,18 +87,19 @@ class IndexController extends RootController
         // 获取raw content
         // echo $this->rawContent();
         // $this->stopRun();
-        go(function() {
-            \co::sleep(5);
-            echo 'hello world!';
-        });
-        \run_info();
 
         // \throw_error('test');
         // $this->stopRun();
 
         // 测试exit
-        echo 'echo hello before exit.';
-        exit;
+        // echo 'echo hello before exit.';
+        // exit;
+
+        go(function() {
+            \co::sleep(5);
+            echo 'hello world!';
+        });
+        \run_info();
 
     }
 }
