@@ -91,15 +91,29 @@ class IndexController extends RootController
         // \throw_error('test');
         // $this->stopRun();
 
-        // 测试exit
-        // echo 'echo hello before exit.';
-        // exit;
+        // 测试 worker stop 继续运行异步任务
+        go(function() {
+            $host = 'www.kfc.com.cn';
+            $host = 'www.bbc.com';
+            echo ",,,,,,,,,, Co\Http\client('{$host}') 发起请求中...\n";
+            // \co::sleep(5);
+            // $http = new \Co\Http\client("a.wboll.com");
+            $http = new \Co\Http\client($host);
+            $http->set(['timeout'=>15]);
+            $http->get('/');
+            echo ",,,,,,,,,, Co\Http\client('{$host}') 输出=" . ($http->statusCode < 0 ? '错误了，statusCode='.$http->statusCode : $http->body) . "\n";
+        });
 
         go(function() {
-            \co::sleep(5);
-            echo 'hello world!';
+            echo "==== co::gethostbyname('a.wboll.com') 输出=" . \co::gethostbyname('a.wboll.com'). "\n";
+            echo date('Y-m-d H:i:s') . ", hello world!\n";
         });
-        \run_info();
+
+        // 测试swoole exit
+        echo 'echo hello before exit.';
+        exit;
+
+        // \run_info();
 
     }
 }
