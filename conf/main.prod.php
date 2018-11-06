@@ -89,8 +89,8 @@ return [
 
             // Max mysql pool size
             // Only support dbdriver mysqlco
-            'idle_pool_size' => 5,
-            'max_pool_size'  => 10
+            'idle_pool_size' => 1,
+            'max_pool_size'  => 2
         ],
 
         // master

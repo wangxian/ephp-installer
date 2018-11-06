@@ -9,7 +9,7 @@ $config = [
     'worker_num'      => 10,
     'task_worker_num' => 0,
 
-    // Close build-in coroutine
+    // Close build-in coroutine，if need using `mysqlco` db driver, set `enable_coroutine=true`
     'enable_coroutine' => false,
     'max_coroutine'    => 5000,
 
