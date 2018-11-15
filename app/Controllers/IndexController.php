@@ -116,4 +116,26 @@ class IndexController extends RootController
         // \run_info();
 
     }
+
+    /**
+     * 测试 mysqli pool
+     *
+     * @return void
+     */
+    function test_mysqli_pool()
+    {
+        var_dump($this->model->dbconfig("default")->table("simple")->findAll());
+    }
+
+    /**
+     * 测试 mysqli pool
+     *
+     * @return void
+     */
+    function mysqli_pool_info()
+    {
+        echo '<pre>';
+        var_dump(\ePHP\Model\DBPool::init('default'));
+        echo '</pre>';
+    }
 }

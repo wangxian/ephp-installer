@@ -71,7 +71,7 @@ return [
     //     'auth'    => ''
     // ],
 
-    // 数据库驱动配置，可选：mysqli, mysql, sqlite3, mysqlco
+    // 数据库驱动配置，可选：mysqli, mysql, sqlite3, mysqli_pool, mysqlco
     'dbdriver'      => 'mysqli',
 
     // 数据库配置
