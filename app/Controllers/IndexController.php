@@ -5,6 +5,16 @@ class IndexController extends RootController
 {
     function index()
     {
+        // 高亮打印
+        dd($_REQUEST, 1, 2, 3, 4);
+        // 浏览器console打印
+        ee($_REQUEST, 1, 2, 3, 4);
+
+        // // 高亮打印，并停止
+        // ddd($_REQUEST, 1, 2, 3, 4);
+        // // 浏览器console打印，并停止
+        // eee($_REQUEST, 1, 2, 3, 4);
+
         // var_dump($client->lrange('apib8-publish-2003', 0, 50));
         // \run_info();
 
@@ -12,16 +22,16 @@ class IndexController extends RootController
 
         // show_404();
         // throw new \ePHP\Exception\ExitException('11');
-        // dump($this->model->table('mytest')->data(['name'=>time()])->insert());
-        // dump($this->model->table('mytest')->where(['id'=>22])->findAll());
-        // dump($this->model->query('show tables')->find());
+        // dd($this->model->table('mytest')->data(['name'=>time()])->insert());
+        // dd($this->model->table('mytest')->where(['id'=>22])->findAll());
+        // dd($this->model->query('show tables')->find());
         // echo '123';
         // run_info();
 
         // return ;
         // 加密cookie
         // (new \ePHP\Http\Cookie())->setSecret('name', 'test');
-        // dump($_COOKIE, (new \ePHP\Http\Cookie())->getSecret('name'));
+        // dd($_COOKIE, (new \ePHP\Http\Cookie())->getSecret('name'));
 
         // 测试 encryptG、decryptG
         // echo $ciphertext = \ePHP\Hash\Encrypt::encryptG('1234567890');
@@ -37,7 +47,7 @@ class IndexController extends RootController
         // var_dump($this->model_test->sql);
 
         // $this->cache->set('datetime', date('Y-m-d H:i:s'), 20);
-        // dump('Value from redis', $this->cache->get('datetime'));
+        // dd('Value from redis', $this->cache->get('datetime'));
 
         // echo \ePHP\Hash\Encrypt::edcode('1', 'encode', 'ephp');
         // echo $h = \ePHP\Hash\Encrypt::edcode('12345678901234567890', 'ENCODE', 'ephp');
@@ -52,8 +62,8 @@ class IndexController extends RootController
         $this->console->error("t5");
         $this->console->fatal("t6");
 
-        dump("SERVER内容", $_SERVER);
-        dump("系统信息", $_GET, $_POST);
+        dd("SERVER内容", $_SERVER);
+        dd("系统信息", $_GET, $_POST);
 
         // echo time();
         run_info();
@@ -74,7 +84,7 @@ class IndexController extends RootController
     {
         // 另一种方式，推荐，该方式兼容swoole
         // $this->cookie->setSecret('name', 'test');
-        // dump($_COOKIE, $this->cookie->getSecret('name'));
+        // dd($_COOKIE, $this->cookie->getSecret('name'));
 
         // 测试swoole协程
         // go(function () {
