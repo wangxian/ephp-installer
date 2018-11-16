@@ -5,9 +5,10 @@
 //   - https://wiki.swoole.com/wiki/page/274.html
 //   - https://wiki.swoole.com/wiki/page/620.html
 $config = [
-    'reactor_num'     => 2,
-    'worker_num'      => 10,
+    'reactor_num'     => 1,
+    'worker_num'      => 4,
     'task_worker_num' => 0,
+    'task_async'      => true,
 
     // Close build-in coroutine，if need using `mysqlco` db driver, set `enable_coroutine=true`
     'enable_coroutine' => false,
@@ -58,13 +59,14 @@ $http = \ePHP\Core\Server::init()->createServer($config);
 
 // Register a task Listener for handle Async Task
 // Backend Task
-// $http->server->on('task', function (swoole_server $serv, $task_id, $from_id, $data)
+// $http->server->on('task', function (swoole_server $server, $task_id, $from_id, $data)
 // {
-//     var_dump("receive task-data=", $data);
-//     sleep(5);
-
-//     // return to the worker
-//     return $data;
+//     var_dump("[onTask]receive data=". $data);
+//     go(function() {
+//       co::sleep(5);
+//       echo 'finish Coroutine task......';
+//     });
+//     echo 'finish task......';
 // });
 
 $http->start();

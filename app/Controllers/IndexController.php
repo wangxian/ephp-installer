@@ -118,7 +118,8 @@ class IndexController extends RootController
     }
 
     /**
-     * 测试 mysqli pool
+     * 测试 mysqli pool, 只支持swoole环境
+     * http://127.0.0.1:8000/index/test_mysqli_pool
      *
      * @return void
      */
@@ -129,6 +130,7 @@ class IndexController extends RootController
 
     /**
      * 测试 mysqli pool
+     * http://127.0.0.1:8000/index/mysqli_pool_info
      *
      * @return void
      */
@@ -137,5 +139,21 @@ class IndexController extends RootController
         echo '<pre>';
         var_dump(\ePHP\Model\DBPool::init('default'));
         echo '</pre>';
+    }
+
+    /**
+     * 测试 server task
+     * https://wiki.swoole.com/wiki/page/134.html
+     *
+     * http://127.0.0.1:8000/index/test_server_task
+     *
+     * @return void
+     */
+    function test_server_task()
+    {
+        echo 'test async server test...';
+        echo '请查看控制台终端输出！';
+
+        $this->server->task('test_server_task');
     }
 }
