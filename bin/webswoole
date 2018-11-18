@@ -6,9 +6,12 @@
 //   - https://wiki.swoole.com/wiki/page/620.html
 $config = [
     'reactor_num'     => 1,
-    'worker_num'      => 4,
+    'worker_num'      => 2,
     'task_worker_num' => 0,
     'task_async'      => true,
+
+    // Enable websocket
+    'enable_websocket'=> true,
 
     // Close build-in coroutine，if need using `mysqlco` db driver, set `enable_coroutine=true`
     'enable_coroutine' => false,
@@ -18,9 +21,9 @@ $config = [
     'reload_async'  => true,
     'max_wait_time' => 30,
 
-    // If setting `DEBUG` environment, in order to facilitate the development force max_request=1
-    // eg: DEBUG=true bin/webswoole
-    'max_request' => getenv('DEBUG') ? 1 : 2000,
+    // If setting `MAX_REQUEST=1` environment, in order to facilitate the development force max_request=1
+    // eg: MAX_REQUEST=1 bin/webswoole
+    'max_request' => getenv('MAX_REQUEST') ? getenv('MAX_REQUEST') : 2000,
 
     'host' => '0.0.0.0',
     'port' => 8000

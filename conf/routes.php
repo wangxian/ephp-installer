@@ -31,3 +31,11 @@ $route->auto(\App\Controllers\ApiController::class);
 // // route POST /be/api/tree/188 to ApiController@tree
 // $route->prefix('/be')->auto(\App\Controllers\Backend\ApiController::class);
 $route->prefix('/be')->auto(\App\Controllers\ApiController::class);
+
+// WebSocket Support demo
+// Websocket demo html page
+$route->get('/websocket', \App\Controllers\WebSocket\EchoController::class, 'index');
+
+// Websocket protocol, handle route '/'
+$route->websocket('/echo', \App\Controllers\WebSocket\EchoController::class);
+
