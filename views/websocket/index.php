@@ -19,7 +19,10 @@
 
 // 带有重连机制的websocket
 function IO(url, reconnectInterval) {
+  // 正在连接
   var isConnecting = false;
+  // 手工强制退出
+  var isCustomStop = false;
 
   // 事件处理器
   var eventHandlers = {
@@ -27,6 +30,10 @@ function IO(url, reconnectInterval) {
       isConnecting = false;
     }],
     close: [function(e) {
+      if (isCustomStop) {
+          return ;
+      }
+
       if (isConnecting) {
         return ;
       }
@@ -37,7 +44,6 @@ function IO(url, reconnectInterval) {
     }]
   };
   var events = ['open', 'message', 'error', 'close'];
-
 
   var factory = {
     // 原始连接
@@ -56,8 +62,16 @@ function IO(url, reconnectInterval) {
       this.socket.send(data);
     },
 
+    // 关闭 socket 通道
+    close: function() {
+      isCustomStop = true;
+      this.socket.close();
+    },
+
     // Connect to ws server
     connect: function() {
+      isCustomStop = false;
+
       // 如果连接没断开，不进行重试
       if ( this.socket != null && this.socket.readyState !== 3 ) {
         return this;
@@ -81,8 +95,7 @@ function IO(url, reconnectInterval) {
             });
           }
         }
-      })
-
+      });
 
       return this;
     }
@@ -104,13 +117,13 @@ io.on('message', function (e) {
   console.log('ws.onmessage', e);
 });
 
-// io.on('error', function (e) {
-//   console.log('ws.onerror', e);
-// });
+io.on('error', function (e) {
+  console.log('ws.onerror', e);
+});
 
-// io.on('close', function (e) {
-//   console.log('ws.onclose', e);
-// });
+io.on('close', function (e) {
+  console.log('ws.onclose', e);
+});
 </script>
 </body>
 </html>
