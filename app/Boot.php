@@ -24,7 +24,13 @@ class Boot
      */
     public function onTask(\Swoole\Server $server, int $task_id, string $data)
     {
-
+        // Register a task Listener for handle Async Task
+        // Backend Task
+        print_r("[onTask]receive data=". $data);
+        go(function() {
+            \co::sleep(5);
+            echo 'finish Coroutine task......';
+        });
     }
 
     /**

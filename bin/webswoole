@@ -60,16 +60,4 @@ require_once __DIR__ . '/../bootstrap/bootstrap.php';
 // Create production server
 $http = \ePHP\Core\Server::init()->createServer($config);
 
-// Register a task Listener for handle Async Task
-// Backend Task
-// $http->server->on('task', function (swoole_server $server, $task_id, $from_id, $data)
-// {
-//     var_dump("[onTask]receive data=". $data);
-//     go(function() {
-//       co::sleep(5);
-//       echo 'finish Coroutine task......';
-//     });
-//     echo 'finish task......';
-// });
-
 $http->start();
