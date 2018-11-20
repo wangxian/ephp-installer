@@ -30,7 +30,7 @@ class EchoController extends RootController implements \ePHP\Core\WebSocketInter
      */
     public function onMessage(\Swoole\WebSocket\Server $server, Frame $frame)
     {
-        echo "[websocket][onmessage]receive from {$frame->fd}:{$frame->data},opcode:{$frame->opcode},fin:{$frame->finish}\n";
+        echo "[websocket][onmessage]receive from fd{$frame->fd}:{$frame->data},opcode:{$frame->opcode},fin:{$frame->finish}\n";
         $server->push($frame->fd, "this is server");
     }
 
@@ -43,7 +43,7 @@ class EchoController extends RootController implements \ePHP\Core\WebSocketInter
      */
     public function onClose(\Swoole\WebSocket\Server $server, int $fd)
     {
-        echo "[websocket][onclose]client {$fd} closed\n";
+        echo "[websocket][onclose]client fd{$fd} closed\n";
     }
 
 }
