@@ -166,4 +166,27 @@ class IndexController extends RootController
 
         $this->server->task('test_server_task');
     }
+
+    /**
+     * 测试requestv等
+     *
+     * @return void
+     */
+    public function test_requestv()
+    {
+        dd("requestv('abc', 1, 'intval')", \requestv('abc', 1, 'intval'));
+        dd("getv('abc', 1, 'intval')", \getv('abc', 1, 'intval'));
+        dd("postv('abc', 1, 'intval')", \postv('abc', 1, 'intval'));
+        dd("getp(3, 1, 'intval')", \getp(3, 1, 'intval'));
+    }
+
+    /**
+     * 测试env
+     *
+     * @return void
+     */
+    public function test_env()
+    {
+        dd( env('APP_PATH') );
+    }
 }
