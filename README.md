@@ -3,7 +3,7 @@
 ## Quick Start
 
 ```bash
-composer create-project wangxian/ephp-installer myapp --prefer-dist -vvv
+composer create-project wangxian/ephp-installer myapp -vvv
 ```
 
 ## 开发文档
