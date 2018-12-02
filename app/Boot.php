@@ -6,7 +6,13 @@ namespace App;
  */
 class Boot
 {
-    public function __construct()
+    /**
+     * Before swoole server started
+     *
+     * @param \Swoole\Server $server
+     * @return void
+     */
+    public function onStart()
     {
         // Do Something before app start
         // As crontab do some task
