@@ -8,12 +8,12 @@ class IndexController extends RootController
         // 高亮打印
         dd($_REQUEST, 1, 2, 3, 4);
         // 浏览器console打印
-        ee($_REQUEST, 1, 2, 3, 4);
+        cc($_REQUEST, 1, 2, 3, 4);
 
         // // 高亮打印，并停止
         // ddd($_REQUEST, 1, 2, 3, 4);
         // // 浏览器console打印，并停止
-        // eee($_REQUEST, 1, 2, 3, 4);
+        // ccc($_REQUEST, 1, 2, 3, 4);
 
         // var_dump($client->lrange('apib8-publish-2003', 0, 50));
         // \run_info();
