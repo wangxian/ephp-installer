@@ -23,7 +23,7 @@ $config = [
 
     // If setting `MAX_REQUEST=1` environment, in order to facilitate the development force max_request=1
     // eg: MAX_REQUEST=1 bin/webswoole
-    'max_request' => getenv('MAX_REQUEST') ? getenv('MAX_REQUEST') : 2000,
+    'max_request' => getenv('MAX_REQUEST') !== false ? getenv('MAX_REQUEST') : 2000,
 
     'host' => '0.0.0.0',
     'port' => 8000

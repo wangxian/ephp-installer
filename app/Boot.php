@@ -12,12 +12,27 @@ class Boot
      * @param \Swoole\Server $server
      * @return void
      */
-    public function onStart()
+    public function onBoot($server)
     {
-        // Do Something before app start
-        // As crontab do some task
-        // echo "App Boot started... \n";
+        // 初始化Swoole Table on server boot
+        // 全局共享内存，需要在Swoole server启动器初始化
     }
+
+    /**
+     * After swoole server started
+     *
+     * @param \Swoole\Server $server
+     * @return void
+     */
+    public function onStart($server) { }
+
+    public function onWorkerStart($server) { }
+
+    public function onWorkerStop($server) { }
+
+    public function onWorkerError($server) { }
+
+    public function onShutdown($server) { }
 
     /**
      * Listen server async task - onTask
