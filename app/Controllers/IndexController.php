@@ -189,4 +189,25 @@ class IndexController extends RootController
     {
         dd( env('APP_PATH') );
     }
+
+    /**
+     * 测试swoole http client
+     * http://127.0.0.1:8000/index/test_swoole_http_client
+     * @return void
+     */
+    public function test_swoole_http_client()
+    {
+        $http = new \ePHP\Http\HttpclientSwoole();
+        dd($http->get('http://apib2.demo.com/index/echo', ['id'=>12], [
+            'timeout' => 8,
+            'headers' => ['abc: def:ff', 'TEST: act.qq.com', 'Content-type: application/json']
+        ]));
+
+        dd($http->post('http://apib2.demo.com/index/echo', ['id'=>12], [
+            'timeout' => 8,
+            'headers' => ['abc: def:ff', 'TEST: act.qq.com'],
+            'files' => ['hosts'=>'/etc/hosts'],
+            'json' => true
+        ]));
+    }
 }
