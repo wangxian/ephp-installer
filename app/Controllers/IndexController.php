@@ -77,6 +77,50 @@ class IndexController extends RootController
         $this->view->render();
     }
 
+    public function echo()
+    {
+        echo '<pre>';
+
+        echo "\$_GET:\n";
+        print_r($_GET);
+
+        echo "\n\$_POST:\n";
+        print_r($_POST);
+
+        echo "\n\$_FILES:\n";
+        print_r($_FILES);
+
+        echo "\n\$_SERVER:\n";
+        print_r($_SERVER);
+
+        echo '</pre>';
+    }
+
+    function ip()
+    {
+        $this->setHeader('content-type', 'text/html; charset=UTF-8');
+        echo '<html lang="zh-CN">';
+        echo '<head>';
+        echo '<meta charset="UTF-8" />';
+        echo '<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">';
+        echo '</head><body>';
+        echo '<pre>';
+
+        var_dump($_SERVER);
+        echo '<h2>getenv("HTTP_CLIENT_IP")</h2>';
+        var_dump(getenv("HTTP_CLIENT_IP"));
+
+        echo '<h2>getenv("HTTP_X_FORWARDED_FOR")</h2>';
+        var_dump(getenv("HTTP_X_FORWARDED_FOR"));
+
+        echo '<h2>getenv("REMOTE_ADDR")</h2>';
+        var_dump(getenv("REMOTE_ADDR"));
+
+        // $this->log("123123");
+        echo '</pre>';
+        run_info();
+    }
+
     /**
      * 测试swoole
      */
