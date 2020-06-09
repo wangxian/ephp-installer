@@ -1,6 +1,11 @@
 <?php
 namespace App\Controllers;
 
+use ePHP\Http\Httpclient;
+
+/**
+ * @property Httpclient httpclient
+ */
 class IndexController extends RootController
 {
     function index()
@@ -235,6 +240,15 @@ class IndexController extends RootController
     }
 
     /**
+     * http://127.0.0.1:8000/index/test_httpclient
+     */
+    public function test_httpclient()
+    {
+        $response = $this->httpclient->get('http://a.demo.com')->body;
+        dd($response);
+    }
+
+    /**
      * 测试swoole http client
      * http://127.0.0.1:8000/index/test_swoole_http_client
      * @return void
@@ -242,12 +256,12 @@ class IndexController extends RootController
     public function test_swoole_http_client()
     {
         $http = new \ePHP\Http\HttpclientSwoole();
-        dd($http->get('http://apib2.demo.com/index/echo', ['id'=>12], [
+        dd($http->get('http://a.wboll.com/index/echo', ['id'=>12], [
             'timeout' => 8,
             'headers' => ['abc: def:ff', 'TEST: act.qq.com', 'Content-type: application/json']
         ]));
 
-        dd($http->post('http://apib2.demo.com/index/echo', ['id'=>12], [
+        dd($http->post('http://a.wboll.com/index/echo', ['id'=>12], [
             'timeout' => 8,
             'headers' => ['abc: def:ff', 'TEST: act.qq.com'],
             'files' => ['hosts'=>'/etc/hosts'],

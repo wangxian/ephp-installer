@@ -14,7 +14,7 @@ $config = [
     'enable_websocket'=> true,
 
     // Close build-in coroutine，if need using `mysqlco` db driver, set `enable_coroutine=true`
-    'enable_coroutine' => false,
+    'enable_coroutine' => true,
     'max_coroutine'    => 5000,
 
     // Async stop worker
