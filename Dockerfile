@@ -1,4 +1,4 @@
-FROM wangxian/alpine-php:7.0.14.r0
+FROM wangxian/alpine-php:7.2
 MAINTAINER WangXian <xian366@126.com>
 
 # Copy app source to image
