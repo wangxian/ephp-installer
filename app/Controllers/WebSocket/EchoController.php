@@ -1,20 +1,28 @@
 <?php
 namespace App\Controllers\WebSocket;
 
+use ePHP\View\BaseView;
 use \Swoole\Http\Request;
 use \Swoole\WebSocket\Frame;
 
 use \App\Controllers\RootController;
 
+/**
+ * @property BaseView view
+ */
 class EchoController extends RootController implements \ePHP\Core\WebSocketInterface
 {
+    /**
+     * 入口
+     * http://127.0.0.1:8000/echo/index
+     */
     public function index()
     {
         $this->view->render('websocket/index.php');
     }
 
-     /**
-     * @param Server $server
+    /**
+     * @param \Swoole\WebSocket\Server $server
      * @param Request $request
      * @return void
      */
@@ -24,7 +32,7 @@ class EchoController extends RootController implements \ePHP\Core\WebSocketInter
     }
 
     /**
-     * @param Server $server
+     * @param \Swoole\WebSocket\Server $server
      * @param Frame $frame
      * @return void
      */
@@ -37,7 +45,7 @@ class EchoController extends RootController implements \ePHP\Core\WebSocketInter
     /**
      * On connection closed
      *
-     * @param Server $server
+     * @param \Swoole\WebSocket\Server $server
      * @param int $fd
      * @return void
      */

@@ -1,6 +1,7 @@
 <?php
 namespace App\Controllers;
 
+use App\Services\DemoService;
 use ePHP\Http\Httpclient;
 
 /**
@@ -151,29 +152,63 @@ class IndexController extends RootController
         // $this->stopRun();
 
         // 测试 worker stop 继续运行异步任务
-        go(function() {
-            $host = 'www.kfc.com.cn';
-            $host = 'www.bbc.com';
-            echo ",,,,,,,,,, Co\Http\client('{$host}') 发起请求中...\n";
-            // \co::sleep(5);
-            // $http = new \Co\Http\client("a.wboll.com");
-            $http = new \Co\Http\client($host);
-            $http->set(['timeout'=>15]);
-            $http->get('/');
-            echo ",,,,,,,,,, Co\Http\client('{$host}') 输出=" . ($http->statusCode < 0 ? '错误了，statusCode='.$http->statusCode : $http->body) . "\n";
-        });
-
-        go(function() {
-            echo "==== co::gethostbyname('a.wboll.com') 输出=" . \co::gethostbyname('a.wboll.com'). "\n";
-            echo date('Y-m-d H:i:s') . ", hello world!\n";
-        });
-
-        // 测试swoole exit
-        echo 'echo hello before exit.';
-        exit;
+        // go(function() {
+        //     $host = 'www.kfc.com.cn';
+        //     $host = 'www.bbc.com';
+        //     echo ",,,,,,,,,, Co\Http\client('{$host}') 发起请求中...\n";
+        //     // \co::sleep(5);
+        //     // $http = new \Co\Http\client("a.wboll.com");
+        //     $http = new \Co\Http\client($host);
+        //     $http->set(['timeout'=>15]);
+        //     $http->get('/');
+        //     echo ",,,,,,,,,, Co\Http\client('{$host}') 输出=" . ($http->statusCode < 0 ? '错误了，statusCode='.$http->statusCode : $http->body) . "\n";
+        // });
+        //
+        // go(function() {
+        //     echo "==== co::gethostbyname('a.wboll.com') 输出=" . \co::gethostbyname('a.wboll.com'). "\n";
+        //     echo date('Y-m-d H:i:s') . ", hello world!\n";
+        // });
+        //
+        // // 测试swoole exit
+        // echo 'echo hello before exit.';
+        // exit;
 
         // \run_info();
 
+        // 测试 __get, __set 是否导致协程切换
+        // $this->cookie->set("a", "b");
+        // $this->session->set("a", "b");
+        // $this->cookie->set("a", "b");
+        // $this->cookie->set("a", "b");
+        // $this->model->dbconfig('hui');
+        // $this->view->assign('a', 'b');
+
+        $GLOBALS['global'] = 'global' . time() . '-' . getmypid();
+        $_GET['get'] = 'get' . time() . '-' . getmypid();
+        $_POST['post'] = 'post' . time() . '-' . getmypid();
+
+        DemoService::$string = "DemoService::string-" . time() . '-' . getmypid();
+
+        dd( ($GLOBALS['global']??'') . '-' . getmypid());
+        dd( ($_GET['get']??'') . '-' . getmypid());
+        dd( ($_POST['post']??'') . '-' . getmypid());
+        dd( DemoService::$string . '-' . getmypid());
+
+        \Swoole\Coroutine::getContext()['test'] = (new \DateTime())->format('Y-m-d H:i:s.u');
+        dd(\Swoole\Coroutine::getContext());
+    }
+
+    function test_swoole2()
+    {
+        // \Swoole\Coroutine::getContext()['test'] = (new \DateTime())->format('Y-m-d H:i:s.u');
+        dd(\Swoole\Coroutine::getContext());
+
+        dd(getv());
+
+        dd( ($GLOBALS['global']??'') . '-' . getmypid());
+        dd( ($_GET['get']??'') . '-' . getmypid());
+        dd( ($_POST['post']??'') . '-' . getmypid());
+        dd( DemoService::$string . '-' . getmypid());
     }
 
     /**
