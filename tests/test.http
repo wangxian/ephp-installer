@@ -1,0 +1,13 @@
+POST http://localhost:8000/index/test_swoole?id=12
+Content-Type: application/json
+
+{"aa": "bb"}
+
+###
+
+POST http://localhost:8000/index/test_swoole
+Content-Type: application/x-www-form-urlencoded
+
+id=99&content=new-element
+
+###

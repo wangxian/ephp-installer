@@ -14,7 +14,7 @@ class EchoController extends RootController implements \ePHP\Core\WebSocketInter
 {
     /**
      * 入口
-     * http://127.0.0.1:8000/echo/index
+     * http://127.0.0.1:8000/websocket
      */
     public function index()
     {
@@ -39,7 +39,7 @@ class EchoController extends RootController implements \ePHP\Core\WebSocketInter
     public function onMessage(\Swoole\WebSocket\Server $server, Frame $frame)
     {
         echo "[websocket][onmessage]receive from fd{$frame->fd}:{$frame->data},opcode:{$frame->opcode},fin:{$frame->finish}\n";
-        $server->push($frame->fd, "this is server");
+        // $server->push($frame->fd, "this is server");
     }
 
     /**

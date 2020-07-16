@@ -3,6 +3,7 @@ namespace App\Controllers;
 
 use App\Services\DemoService;
 use ePHP\Http\Httpclient;
+use function Co\run;
 
 /**
  * @property Httpclient httpclient
@@ -69,7 +70,7 @@ class IndexController extends RootController
         $this->console->fatal("t6");
 
         dd("SERVER内容", $_SERVER);
-        dd("系统信息", $_GET, $_POST);
+        dd("系统信息", $_GET, $_POST, $_REQUEST);
 
         // echo time();
         run_info();
@@ -181,9 +182,20 @@ class IndexController extends RootController
         // $this->cookie->set("a", "b");
         // $this->cookie->set("a", "b");
         // $this->model->dbconfig('hui');
-        // $this->view->assign('a', 'b');
+        $this->view->assign('a', 'b');
+        $this->view->assign('a', 'b');
+        $this->view->assign('a', 'b');
 
-        $GLOBALS['global'] = 'global' . time() . '-' . getmypid();
+        $this->setHeader("content-type", "text/html;charset=UTF-8");
+        $this->setHeader("content-type", "text/html;charset=UTF-8");
+        $this->setHeader("content-type", "text/html;charset=UTF-8");
+        $this->setHeader("content-type", "text/html;charset=UTF-8");
+        dd(getv(), postv(), requestv());
+        run_info(true);
+
+        return;
+
+        $GLOBALS['global'] = 'global' . time() . '-' . getmypid();;
         $_GET['get'] = 'get' . time() . '-' . getmypid();
         $_POST['post'] = 'post' . time() . '-' . getmypid();
 
