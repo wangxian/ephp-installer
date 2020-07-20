@@ -5,7 +5,7 @@
 $host = '0.0.0.0';
 $port = 8000;
 
-// define app directory
+// Define app directory
 define('APP_PATH', realpath(__DIR__ . '/../'));
 
 /*

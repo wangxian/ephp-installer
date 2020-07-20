@@ -72,19 +72,24 @@ class Boot
      * Usage: Task::push("some data")
      *
      * @param \Swoole\Server $server
-     * @param integer $task_id
-     * @param int $src_worker_id
-     * @param string $data
+     * @param \Swoole\Server\Task $task
      * @return void
      */
-    public function onTask(\Swoole\Server $server, int $task_id, int $src_worker_id, $data)
+    public function onTask(\Swoole\Server $server, \Swoole\Server\Task $task)
     {
         // Register a task Listener for handle Async Task
         // Backend Task
-        print_r("[onTask]receive data=" . $data);
-        go(function () {
+        // $task->worker_id;              // 来自哪个`Worker`进程
+        // $task->id;                     // 任务的编号
+        // $task->flags;                  // 任务的类型，taskwait, task, taskCo, taskWaitMulti 可能使用不同的 flags
+        // $task->data;                   // 任务的数据
+        // co::sleep(0.2);                // 协程 API
+        // $task->finish([123, 'hello']); // 完成任务，结束并返回数据
+
+        var_dump("接收到的信息=", $task);
+        go(function () use ($task) {
             \co::sleep(5);
-            echo 'finish Coroutine task......';
+            $task->finish('延迟任务执行完毕');
         });
     }
 
@@ -98,6 +103,8 @@ class Boot
      */
     public function onFinish(\Swoole\Server $server, int $task_id, string $data)
     {
-
+        echo "[onFinish]\n";
+        var_dump('task_id', $task_id);
+        var_dump('data', $data);
     }
 }

@@ -1,9 +1,12 @@
 <?php
+/** @noinspection PhpUnreachableStatementInspection */
+/** @noinspection DuplicatedCode */
+
 namespace App\Controllers;
 
 use App\Services\DemoService;
+use ePHP\Core\Server;
 use ePHP\Http\Httpclient;
-use function Co\run;
 
 /**
  * @property Httpclient httpclient
@@ -89,16 +92,23 @@ class IndexController extends RootController
         echo '<pre>';
 
         echo "\$_GET:\n";
-        print_r($_GET);
+        print_r(getv());
 
         echo "\n\$_POST:\n";
-        print_r($_POST);
+        print_r(postv());
+
+        echo "\n\$_REQUEST:\n";
+        print_r(requestv());
+
+        echo "\nrawContent:\n";
+        print_r($this->rawContent());
+        echo "\n";
 
         echo "\n\$_FILES:\n";
-        print_r($_FILES);
+        print_r(filesv());
 
         echo "\n\$_SERVER:\n";
-        print_r($_SERVER);
+        print_r(serverv());
 
         echo '</pre>';
     }
@@ -145,6 +155,12 @@ class IndexController extends RootController
         //     echo $http->body;
         // });
 
+        // Server::init()->server->defer(function () {
+        //    echo "123";
+        //    echo 123;
+        //    echo "\n";
+        // });
+
         // 获取raw content
         // echo $this->rawContent();
         // $this->stopRun();
@@ -182,38 +198,41 @@ class IndexController extends RootController
         // $this->cookie->set("a", "b");
         // $this->cookie->set("a", "b");
         // $this->model->dbconfig('hui');
-        $this->view->assign('a', 'b');
-        $this->view->assign('a', 'b');
-        $this->view->assign('a', 'b');
+        // $this->view->assign('a', 'b');
+        // $this->view->assign('a', 'b');
+        // $this->view->assign('a', 'b');
+        //
+        // $this->setHeader("content-type", "text/html;charset=UTF-8");
+        // $this->setHeader("content-type", "text/html;charset=UTF-8");
+        // $this->setHeader("content-type", "text/html;charset=UTF-8");
+        // $this->setHeader("content-type", "text/html;charset=UTF-8");
+        // dd(getv(), postv(), requestv());
+        // run_info(true);
+        //
+        // return;
+        //
+        // $GLOBALS['global'] = 'global' . time() . '-' . getmypid();;
+        // $_GET['get'] = 'get' . time() . '-' . getmypid();
+        // $_POST['post'] = 'post' . time() . '-' . getmypid();
 
-        $this->setHeader("content-type", "text/html;charset=UTF-8");
-        $this->setHeader("content-type", "text/html;charset=UTF-8");
-        $this->setHeader("content-type", "text/html;charset=UTF-8");
-        $this->setHeader("content-type", "text/html;charset=UTF-8");
-        dd(getv(), postv(), requestv());
-        run_info(true);
+        // DemoService::$string = "DemoService::string-" . time() . '-' . getmypid();
+        //
+        // dd( ($GLOBALS['global']??'') . '-' . getmypid());
+        // dd( ($_GET['get']??'') . '-' . getmypid());
+        // dd( ($_POST['post']??'') . '-' . getmypid());
+        // dd( DemoService::$string . '-' . getmypid());
+        //
+        // \Swoole\Coroutine::getContext()['test'] = (new \DateTime())->format('Y-m-d H:i:s.u');
+        // dd(\Swoole\Coroutine::getContext());
 
-        return;
-
-        $GLOBALS['global'] = 'global' . time() . '-' . getmypid();;
-        $_GET['get'] = 'get' . time() . '-' . getmypid();
-        $_POST['post'] = 'post' . time() . '-' . getmypid();
-
-        DemoService::$string = "DemoService::string-" . time() . '-' . getmypid();
-
-        dd( ($GLOBALS['global']??'') . '-' . getmypid());
-        dd( ($_GET['get']??'') . '-' . getmypid());
-        dd( ($_POST['post']??'') . '-' . getmypid());
-        dd( DemoService::$string . '-' . getmypid());
-
-        \Swoole\Coroutine::getContext()['test'] = (new \DateTime())->format('Y-m-d H:i:s.u');
-        dd(\Swoole\Coroutine::getContext());
+        // dd("PID=", getmypid(), "server", \ePHP\Core\Server::init()->server);
     }
 
     function test_swoole2()
     {
         // \Swoole\Coroutine::getContext()['test'] = (new \DateTime())->format('Y-m-d H:i:s.u');
-        dd(\Swoole\Coroutine::getContext());
+        echo (\Swoole\Coroutine::getContext()['__$request']->fd);
+        return;
 
         dd(getv());
 
@@ -260,7 +279,7 @@ class IndexController extends RootController
         echo 'test async server test...';
         echo '请查看控制台终端输出！';
 
-        $this->server->task('test_server_task');
+        Server::init()->server->task('test_server_task');
     }
 
     /**
@@ -283,7 +302,7 @@ class IndexController extends RootController
      */
     public function test_env()
     {
-        dd( env('APP_PATH') );
+        dd( env('STDOUT_LOG') );
     }
 
     /**

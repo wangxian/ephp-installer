@@ -10,7 +10,7 @@ $route->auto(\App\Controllers\IndexController::class);
 $route->get('/user/:id/info', \App\Controllers\IndexController::class, 'index');
 
 // match GET /fe/user/188/info to UserController@info
-$route->prefix('/fe')->get('/user/:id(\d+)/info', \App\Controllers\IndexController::class, 'index');
+$route->prefix('/fe')->get('/user/:id(\d+)/info', \App\Controllers\IndexController::class, 'echo');
 
 // $route->post('/user/:id(\d+)', \App\Controllers\UserController::class, 'add');
 // $route->put('/user/:id(\d+)', \App\Controllers\UserController::class, 'edit');

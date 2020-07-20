@@ -5,13 +5,12 @@
 
 // Swoole server config
 // See Wiki:
-//   - https://wiki.swoole.com/wiki/page/274.html
-//   - https://wiki.swoole.com/wiki/page/620.html
+//   - https://wiki.swoole.com/#/server/setting
 $config = [
-    'reactor_num'     => 2,
-    'worker_num'      => 10,
+    'reactor_num'     => 1,
+    'worker_num'      => 4,
     'task_worker_num' => 0,
-    'task_async'      => true,
+    'task_enable_coroutine' => true,
 
     // Enable websocket
     'enable_websocket'=> true,
