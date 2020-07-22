@@ -140,6 +140,7 @@ class IndexController extends RootController
 
     /**
      * 测试swoole
+     * @noinspection PhpUnhandledExceptionInspection
      */
     function test_swoole()
     {
@@ -226,6 +227,8 @@ class IndexController extends RootController
         // dd(\Swoole\Coroutine::getContext());
 
         // dd("PID=", getmypid(), "server", \ePHP\Core\Server::init()->server);
+
+        redirect_to("http://a.wboll.com");
     }
 
     function test_swoole2()
