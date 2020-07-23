@@ -16,14 +16,14 @@ class IndexController extends RootController
     function index()
     {
         // 高亮打印
-        dd($_REQUEST, 1, 2, 3, 4);
+        dd(requestv(), 1, 2, 3, 4);
         // 浏览器console打印
-        cc($_REQUEST, 1, 2, 3, 4);
+        cc(requestv(), 1, 2, 3, 4);
 
         // // 高亮打印，并停止
-        // ddd($_REQUEST, 1, 2, 3, 4);
+        // ddd(requestv(), 1, 2, 3, 4);
         // // 浏览器console打印，并停止
-        // ccc($_REQUEST, 1, 2, 3, 4);
+        // ccc(requestv(), 1, 2, 3, 4);
 
         // var_dump($client->lrange('apib8-publish-2003', 0, 50));
         // \run_info();
@@ -72,8 +72,8 @@ class IndexController extends RootController
         $this->console->error("t5");
         $this->console->fatal("t6");
 
-        dd("SERVER内容", $_SERVER);
-        dd("系统信息", $_GET, $_POST, $_REQUEST);
+        dd("SERVER内容", serverv());
+        dd("系统信息", getv(), postv(), requestv());
 
         // echo time();
         run_info();
@@ -123,7 +123,7 @@ class IndexController extends RootController
         echo '</head><body>';
         echo '<pre>';
 
-        var_dump($_SERVER);
+        var_dump(serverv());
         echo '<h2>getenv("HTTP_CLIENT_IP")</h2>';
         var_dump(getenv("HTTP_CLIENT_IP"));
 
@@ -240,8 +240,8 @@ class IndexController extends RootController
         dd(getv());
 
         dd( ($GLOBALS['global']??'') . '-' . getmypid());
-        dd( ($_GET['get']??'') . '-' . getmypid());
-        dd( ($_POST['post']??'') . '-' . getmypid());
+        dd( (getv()['get']??'') . '-' . getmypid());
+        dd( (postv()['post']??'') . '-' . getmypid());
         dd( DemoService::$string . '-' . getmypid());
     }
 
