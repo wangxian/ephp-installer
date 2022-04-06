@@ -6,6 +6,7 @@ namespace App\Controllers;
 
 use App\Services\DemoService;
 use ePHP\Core\Server;
+use ePHP\Http\Cookie;
 use ePHP\Http\Httpclient;
 
 /**
@@ -336,5 +337,16 @@ class IndexController extends RootController
             'files' => ['hosts'=>'/etc/hosts'],
             'json' => true
         ]));
+    }
+
+    /**
+     * 测试 php8 兼容性
+     */
+    public function test_php8()
+    {
+        // 测试 setcookie 兼容性，第二个参数必须是 string
+        $this->cookie->set("name", "tom");
+        // $this->cookie->set("name2", null);
+        $this->cookie->delete("name");
     }
 }
