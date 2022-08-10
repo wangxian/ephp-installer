@@ -1,5 +1,6 @@
 <?php
 /** @noinspection PhpUnreachableStatementInspection */
+
 /** @noinspection DuplicatedCode */
 
 namespace App\Controllers;
@@ -84,7 +85,7 @@ class IndexController extends RootController
         // echo $name;
         // echo 120;
 
-        $this->view->name  = 'ephp7';
+        $this->view->name = 'ephp7';
         $this->view->render();
     }
 
@@ -235,15 +236,15 @@ class IndexController extends RootController
     function test_swoole2()
     {
         // \Swoole\Coroutine::getContext()['test'] = (new \DateTime())->format('Y-m-d H:i:s.u');
-        echo (\Swoole\Coroutine::getContext()['__$request']->fd);
+        echo(\Swoole\Coroutine::getContext()['__$request']->fd);
         return;
 
         dd(getv());
 
-        dd( ($GLOBALS['global']??'') . '-' . getmypid());
-        dd( (getv()['get']??'') . '-' . getmypid());
-        dd( (postv()['post']??'') . '-' . getmypid());
-        dd( DemoService::$string . '-' . getmypid());
+        dd(($GLOBALS['global'] ?? '') . '-' . getmypid());
+        dd((getv()['get'] ?? '') . '-' . getmypid());
+        dd((postv()['post'] ?? '') . '-' . getmypid());
+        dd(DemoService::$string . '-' . getmypid());
     }
 
     /**
@@ -306,7 +307,7 @@ class IndexController extends RootController
      */
     public function test_env()
     {
-        dd( env('STDOUT_LOG') );
+        dd(env('STDOUT_LOG'));
     }
 
     /**
@@ -326,16 +327,16 @@ class IndexController extends RootController
     public function test_swoole_http_client()
     {
         $http = new \ePHP\Http\HttpclientSwoole();
-        dd($http->get('http://a.wboll.com/index/echo', ['id'=>12], [
+        dd($http->get('http://a.wboll.com/index/echo', ['id' => 12], [
             'timeout' => 8,
             'headers' => ['abc: def:ff', 'TEST: act.qq.com', 'Content-type: application/json']
         ]));
 
-        dd($http->post('http://a.wboll.com/index/echo', ['id'=>12], [
+        dd($http->post('http://a.wboll.com/index/echo', ['id' => 12], [
             'timeout' => 8,
             'headers' => ['abc: def:ff', 'TEST: act.qq.com'],
-            'files' => ['hosts'=>'/etc/hosts'],
-            'json' => true
+            'files'   => ['hosts' => '/etc/hosts'],
+            'json'    => true
         ]));
     }
 
@@ -344,9 +345,38 @@ class IndexController extends RootController
      */
     public function test_php8()
     {
+        // 123
         // 测试 setcookie 兼容性，第二个参数必须是 string
         $this->cookie->set("name", "tom");
         // $this->cookie->set("name2", null);
         $this->cookie->delete("name");
+    }
+
+    public function redirect_a()
+    {
+        $this->redirect('http://127.0.0.1:8000/index/redirect_b', 301);
+    }
+
+    /**
+     * 测试默认都发送 ua
+     * http://127.0.0.1:8000/index/test_httpclient_ua
+     */
+    public function test_httpclient_ua()
+    {
+        ddd($this->httpclient->get("https://flowus.cn/", [], [
+            'headers' => ['user-agent: chrome/102 edg/108']
+        ])->body);
+    }
+
+    /**
+     * 测试获取URL 301 后的内容
+     * http://127.0.0.1:8000/index/test_curl_follow_redirect
+     */
+    public function test_curl_follow_redirect()
+    {
+        ddd($this->httpclient->get("http://flowus.cn/", [], [
+            'follow' => true,
+            'timeout' => 5
+        ])->body);
     }
 }
